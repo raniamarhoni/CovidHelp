@@ -1,46 +1,30 @@
 import os
-import pymongo
-from flask import Flask
-from flask_pymongo import flask_pymongo
+from flask import (
+    Flask, flash, render_template,
+    redirect, request, session, url_for)
+from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-
-app = Flask(__name__)
-
-
 if os.path.exists("env.py"):
     import env
 
-MONGO_URI = os.environ.get("MONGO_URI")
-DATABASE = "covidhelp"
-COLLECTION = "users"
+
+app = Flask(__name__)
+
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
 
 
-def mongo_connect(url):
-    try:
-        conn = pymongo.MongoClient(url)
-        print("Mongo is connected")
-        return conn
-    except pymongo.errors.ConnectionFailure as e:
-        print("Could not connect to MONGODB: %s") % e
+@app.route("/")
+@app.route('/get_posts')
+def get_posts():
+    posts = mongo.db.posts.find()
+    return render_template("posts.html", posts=posts)
 
 
-conn = mongo_connect(MONGO_URI)
-
-coll = conn[DATABASE][COLLECTION]
-
-documents = coll.find()
-
-
-for doc in documents:
-    print(doc)
-
-
-@app.route('/')
-def hello():
-    return "Hello World ... again! "
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
