@@ -1,0 +1,101 @@
+body {
+    background-color: white;
+    font-family: 'Acme', sans-serif;
+    margin: 0px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/*----------HOME----------*/
+.homepage {
+    background-image: url('../design/images/home.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    width: 100vw;
+}
+
+.background-cover {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.top {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    top: 40%;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    margin: 0;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.description {
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    padding: 5px;
+    margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+   .title {
+       font-size: 4em; 
+    }
+    .description {
+       font-size: 1.5em; 
+    }
+}
+
+@media (min-width: 992px) {
+   .title {
+       font-size: 5em; 
+    }
+    .description {
+       font-size: 2em; 
+    }
+}
+
+
+/*----------NAVBAR----------*/
+
+.navbar-brand {
+    color: black;
+}
+
+.navbar-brand:hover{
+    color: white !important;
+    background-color: #858585 !important;
+}
+
+.navbar {
+    background-color: white;
+    text-align: right;
+}
+
+.nav-link {
+    color: black;
+    font-size: 1em;  
+}
+
+.nav-link:hover{
+    color: white !important;
+    background-color: #858585 !important;
+}
+
+.navbar .navbar-collapse {
+    transition-timing-function: ease-in-out;
+    transition-duration: 2s;
+}

@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid Help</title>
-</head>
-<body>
-<h1>I'm part of the base temeplate</h1>
-{% block content %}
-
-{% endblock %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--CSS Link-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
+    <!--Bootstrap Link-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <!--Font Awesome Link-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous"/>
     
-</body>
+    {% block title %}
+    <title>Check</title>
+    {% endblock %}
+
+  </head>
+
+  <body>
+    <!--*******HOMEPAGE*******-->
+    <header class="homepage">
+      <div class="background-cover">
+        <!--*******NAVBAR*******-->
+        <nav class="navbar navbar-expand-md fixed-top">
+          <!-- Navbar Brand -->
+          <a class="navbar-brand" href="{{url_for('home') }}">Covid Help UK</a>
+
+          <!-- Toggler/collapsibe Button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <i class="fas fa-user"></i>
+          </button>
+
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="">All Posts</a>
+                </li>
+              {% if session.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Manage Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Add a Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Log Out</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Register</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+
+        <!--*******HEADER*******-->
+        <div class="top">
+          <h1 class="title">Covid Help UK</h1>
+          <p class="description">Find or lend a helping hand around your local community</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+    {% block content %} 
+    {% endblock %}
+    </main>
+
+    <!--*******SCRIPTS*******-->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </body>
 </html>
