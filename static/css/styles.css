@@ -8,7 +8,7 @@ body {
 
 /*----------HOME----------*/
 .homepage {
-    background-image: url('../design/images/home.jpg');
+    background-image: url('../images/home.jpg');
     background-size: cover;
     background-position: center;
     height: 70vh;
