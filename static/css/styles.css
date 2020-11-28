@@ -1,3 +1,5 @@
+/*----------BASE----------*/
+
 body {
     background-color: white;
     font-family: 'Acme', sans-serif;
@@ -6,7 +8,6 @@ body {
     overflow-x: hidden;
 }
 
-/*----------HOME----------*/
 .homepage {
     background-image: url('../images/home.jpg');
     background-size: cover;
@@ -98,4 +99,29 @@ body {
 .navbar .navbar-collapse {
     transition-timing-function: ease-in-out;
     transition-duration: 2s;
+}
+
+/*----------Common styles used----------*/
+
+.button {
+    background-color: white;
+    color: #858585;
+    border: 2px solid #858585;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.button-section {
+    margin: 30px;
+    height: fit-content;
+}
+
+/*----------HOME----------*/
+
+.home-section {
+    text-align: center;
+    padding: 30px 10px;
+    color: #858585;
 }
