@@ -136,10 +136,16 @@ def add_a_post():
             "date_posted": datetime.datetime.now()
         }
         mongo.db.posts.insert_one(post)
-        flash("Task Successfully Added")
+        flash("Post Successfully Added")
         return redirect(url_for('manage_posts', username=session['user']))
 
     return render_template("add_a_post.html")
+
+
+@app.route("/edit_post/<post_id>", methods=["GET", "POST"])
+def edit_post(post_id):
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    return render_template("edit_post.html", post=post)
 
 
 @app.route('/posts')
