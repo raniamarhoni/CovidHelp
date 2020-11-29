@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% extends "base.html" %} {% block title %}
-<title>Add a post</title>
+<title>Edit post</title>
 {% endblock %} {% block content %}
 
 <div class="row">
@@ -18,19 +18,34 @@
       <div class="card-body">
         <form class="form-format" method="POST" action="{{url_for('edit_post', post_id=post._id) }}">
             <label class="radio-form-label">Are you offering or finding help: </label>
+            {% if post.type_of_help == 'offering' %}
             <div class="form-check-inline">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="type_of_help" value="offering">Offering
+                    <input type="radio" class="form-check-input" name="type_of_help" value="offering" checked>Offering
                 </label>
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="type_of_help" value="finding">Finding
                 </label>
             </div>
+            {% else %}
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="type_of_help" value="offering">Offering
+                </label>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="type_of_help" value="finding" checked>Finding
+                </label>
+            </div>
+            {% endif %}
+        
 
-            <input id="location" name="location" type="text" placeholder="Post Code:" class="validate form-input" />
-            <input id="title" name="title" type="text" placeholder="Title:" class="validate form-input" required/>
-            <textarea class="form-input" name="description" rows="6" placeholder="Description:" required></textarea>
+            <input id="location" name="location" type="text" placeholder="Post Code:" value="{{ post.location }}" class="validate form-input" />
+            <input id="title" name="title" type="text" placeholder="Title:" class="validate form-input" value="{{ post.title }}" required/>
+            <textarea class="form-input" name="description" rows="6" placeholder="Description:" required>{{- post.description -}}</textarea>
+            <div class="button-section-mid">
+            <a href="{{url_for('manage_posts', username=session['user']) }}" class="form-submit">Cancel <i class="fas fa-times-circle"></i></a>
             <button type="submit" class="form-submit">Edit Post <i class="fas fa-sign-in-alt"></i></button>
+            </div>
 
         </form>
       </div>
