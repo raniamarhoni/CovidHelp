@@ -145,6 +145,17 @@ def add_a_post():
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    if request.method == "POST":
+        submit = {
+            "type_of_help": request.form.get("type_of_help"),
+            "username": session["user"],
+            "location": request.form.get("location"),
+            "title": request.form.get("title"),
+            "description": request.form.get("description")
+        }
+        mongo.db.posts.update({"_id": ObjectId(post_id)}, submit)
+        flash("Post Successfully Updated")
+
     return render_template("edit_post.html", post=post)
 
 
