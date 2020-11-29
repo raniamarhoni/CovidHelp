@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}
+<title>Log In</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12 col-md-8 form-section">
+
+    <!--Card-->
+    <div class="card card-format">
+
+      <!--Card Header-->
+      <div class="card-header">
+        <h2>Log In</h2>
+      </div>
+      
+      <!--Cars Body-->
+      <div class="card-body">
+        <form class="form-format" method="POST" action="{{ url_for('log_in') }}">
+          
+          <div class="card-panel">
+            <input id="username" name="username" type="text" placeholder="Username:" class="validate form-input"/>
+            <input id="password" name="password" type="password" placeholder="Password:" class="validate form-input"/>
+            <button type="submit" class="form-submit">Log In <i class="fas fa-sign-in-alt"></i></button>
+          </div>
+                                                          
+        </form>
+        <!--<p class="forgotten_account"><a href="">Forgot Username or Password?</a></p>-->
+      </div>
+
+      <div class="card-footer">
+        <p class="card-footer-format">New Here? <a class="form-link" href="{{ url_for('register') }}">Register Account</a> </p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
+
