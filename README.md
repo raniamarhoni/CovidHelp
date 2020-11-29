@@ -93,6 +93,11 @@ They can search up posts people have posted on ways they can help and respond as
 
 ## Testing
 
+### Bugs Fixed 
+
+#### Collection name saved different 
+When adding or editing a post I realised it wasn't showing up on the manage tasks page but would add or edit in the mongodb database. I noticed when adding a post it was saving the user under username instead of user which would add to the database but wouldn't show up on the users manage posts. Therefore it was changed to user 
+
 ### Validators
 
 ## Deployment
