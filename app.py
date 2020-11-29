@@ -3,7 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-import datetime  
+import datetime 
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -121,6 +121,25 @@ def manage_posts(username):
             "manage_posts.html", username=username, posts=posts)
 
     return redirect(url_for("log_in"))
+
+
+@app.route("/add_a_post", methods=["GET", "POST"])
+def add_a_post():
+
+    if request.method == "POST":
+        post = {
+            "type_of_help": request.form.get("type_of_help"),
+            "username": session["user"],
+            "location": request.form.get("location"),
+            "title": request.form.get("title"),
+            "description": request.form.get("description"),
+            "date_posted": datetime.datetime.now()
+        }
+        mongo.db.posts.insert_one(post)
+        flash("Task Successfully Added")
+        return redirect(url_for('manage_posts', username=session['user']))
+
+    return render_template("add_a_post.html")
 
 
 if __name__ == "__main__":
