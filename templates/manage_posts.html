@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+<title>Covid Help UK</title>
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h2 class="page_headers">Manage Your Posts</h2>
+        {% if posts.count() > 0 %}
+            <p class="page-description">Want to add another post 
+                <a class="button" href="">
+                    Add a post</a></p>
+        {% else: %}
+            <p class="page-description">You have no posts 
+                <a class="button" href="">
+                    Add a post</a></p>
+        {% endif %}
+
+    </div>
+
+    <div class="posts">
+    {% for post in posts %}
+        <div class="post-box">
+
+                {% if post.type == "Offering": %}
+                    <p class="post-help-header">Lending a Helping Hand</p>
+                {% else: %}
+                    <p class="post-help-header">Needs a Helping Hand</p>
+                {% endif %}
+
+                <div class="post-start">
+                <div class="row">
+                    <p class="post-title col-sm-12 col-md-6">{{ post.title }}</p>
+                    <p class="post-date-location col-md-6 d-none d-md-block">{{ post.date_posted }} / {{ post.location }}</p>
+                </div>
+                <p class="post-description">{{ post.description }}</p>
+                <div class="row d-md-none">
+                    <p class="post-date col-6">{{ post.date_posted }}</p>
+                    <p class="post-location col-6">{{ post.location }}</p>
+                </div>
+
+                </div>
+
+                <div class="button-section-end">
+                <a class="button" href="">Edit Post</a>
+                <a class="button" href="">Delete Post</a>
+                </div>
+
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

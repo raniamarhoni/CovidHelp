@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+import datetime  
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -105,6 +106,19 @@ def profile(username):
 
     if session["user"]:
         return render_template("profile.html", username=username)
+
+    return redirect(url_for("log_in"))
+
+
+@app.route("/manage_posts/<username>", methods=["GET", "POST"])
+def manage_posts(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        posts = mongo.db.posts.find({"user": username})
+        return render_template(
+            "manage_posts.html", username=username, posts=posts)
 
     return redirect(url_for("log_in"))
 
