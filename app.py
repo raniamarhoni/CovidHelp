@@ -62,6 +62,7 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
+
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
     if request.method == "POST":
@@ -86,6 +87,15 @@ def log_in():
             return redirect(url_for("log_in"))
 
     return render_template("log_in.html")
+
+
+@app.route("/log_out")
+def log_out():
+    # remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("log_in"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
