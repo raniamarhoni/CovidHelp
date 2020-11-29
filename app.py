@@ -142,6 +142,12 @@ def add_a_post():
     return render_template("add_a_post.html")
 
 
+@app.route('/posts')
+def posts():
+    posts = mongo.db.posts.find()
+    return render_template("posts.html", posts=posts)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
