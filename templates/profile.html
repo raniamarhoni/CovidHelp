@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12 col-md-8 form-section">
+
+    <!--Card-->
+    <div class="card card-format">
+
+      <!--Card Header-->
+      <div class="card-header">
+        <h2>{{ username }}'s Profile</h2>
+      </div>
+      
+      <!--Cars Body-->  
+      <div class="card-body">
+          
+          <div class="card-panel">
+
+            <div class="button-section">
+                <a class="button" href="">Manage Posts</a>
+                <a class="button" href="">Add a post</a>
+            </div>
+
+          
+          </div>
+                                                          
+
+      </div>
+
+      <div class="card-footer">
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
+
