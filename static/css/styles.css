@@ -125,3 +125,80 @@ body {
     padding: 30px 10px;
     color: #858585;
 }
+
+/*----------FLASH MESSAGES----------*/
+.flash_message {
+    text-align: center;
+    width: 100%;
+    margin: 20px 0px;
+    color: white;
+    padding: 10px;
+    background-color: #858585;
+}
+
+
+/*----------FORMS----------*/
+
+.form-section {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.card {
+    margin: auto;
+    width: 90%;
+    max-width: 450px;
+    min-width: 290px !important;
+}
+
+.card-format {
+    border: 3px solid #858585 !important;
+}
+
+.card-header {
+    color: #858585;
+    text-align: center;
+    padding: 15px 30px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.form-format {
+    margin: auto;
+}
+
+.form-check-label {
+    padding: 5px;
+}
+
+.form-input {
+    display: block;
+    border-radius: 0.25rem;
+    border: 3px solid #858585;
+    padding:5px;
+    margin: 10px auto;
+    width: 90%;
+    min-width: 200px;
+    max-width: 350px;
+}
+
+.form-submit {
+    color: #858585;
+    border: 3px solid #858585;
+    border-radius: 0.25rem;
+    padding: 5px 15px;
+    margin: 10px 0px;
+}
+
+.card-footer-format {
+    color:#858585;
+}
+
+.form-link {
+    color: #858585;
+}
+
+.form-link:hover {
+    color: white;
+    background-color: #858585;
+}

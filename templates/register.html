@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "base.html" %} {% block title %}
+<title>Register</title>
+{% endblock %} {% block content %}
+
+<div class="row">
+  <div class="col-sm-12 col-md-8 form-section">
+    <!--Card-->
+    <div class="card card-format">
+      <!--Card Header-->
+      <div class="card-header">
+        <h2>Register</h2>
+      </div>
+
+      <!--Cars Body-->
+      <div class="card-body">
+        <form class="form-format" method="POST" action="{{ url_for('register') }}">
+          <label class="radio-form-label">Type of account: </label>
+          
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="type_of_help" 
+                value="Personal" required />Personal
+            </label>
+
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="type_of_help"
+                value="Business"/>Business
+            </label>
+          </div>
+
+          <input id="email" name="email" type="email" placeholder="Email:"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+            title="Not a valid email" class="validate form-input" required />
+
+          <input id="username" name="username" type="text" placeholder="Username:" minlength="5"
+            maxlength="15" pattern="[a-zA-Z0-9]{5,15}$" title="5 to 15 characters"
+            class="validate form-input" required />
+
+          <input id="password" name="password" type="password" placeholder="Password:"
+            pattern=".{8,}" title="Eight or more characters" minlength="8"
+            class="validate form-input" required />
+
+          <input id="confirm_password" minlength="8" name="confirm_password" 
+            pattern=".{8,}" title="Eight or more characters" type="password" 
+            placeholder="Confirm Password:" class="validate form-input" required />
+
+          <button type="submit" class="form-submit">
+            Register <i class="fas fa-sign-in-alt"></i>
+          </button>
+
+        </form>
+      </div>
+
+      <div class="card-footer">
+        <p class="card-footer-format">Already Registered? <a class="form-link" href="">Log In</a> </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

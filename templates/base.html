@@ -54,7 +54,7 @@
                     <a class="nav-link" href="">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Register</a>
+                    <a class="nav-link" href="{{url_for('register') }}">Register</a>
                 </li>
               {% endif %}
             </ul>
@@ -68,6 +68,18 @@
         </div>
       </div>
     </header>
+    
+    <!-- flash messages -->
+    <section>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                        <h4 class="flash_message">{{ message }}</h4>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
 
     <main class="container">
     {% block content %} 
