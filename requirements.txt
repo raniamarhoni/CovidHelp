@@ -1,7 +1,17 @@
+blinker==1.4
 click==7.1.2
 dnspython==2.0.0
 Flask==1.1.2
+Flask-Mail==0.9.1
 Flask-PyMongo==2.3.0
 itsdangerous==1.1.0
+numpy==1.19.4
+pandas==1.1.4
+pgeocode==0.3.0
+Postcodes==0.1
+postcodes-io-api==0.0.4
 pymongo==3.11.1
+pytz==2020.4
+timeago==1.0.14
+uk-postcode-utils==1.1
 Werkzeug==1.0.1
