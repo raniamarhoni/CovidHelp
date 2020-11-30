@@ -105,6 +105,10 @@ I realised anyone was able to add a post if they typed it into the url therefor 
 ### Anyone can edit the post if they had the post_id 
 I realised that if someone had the post_id they would be able to edit the post even through they are not logged in i changed this so you can only access that page if you are logged in 
 
+### Post wasn't updating
+When updating a post not everything was getting updated as it wasn't being on the list to get updated 
+
+
 ### Validators
 
 ## Deployment
