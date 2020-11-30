@@ -170,6 +170,15 @@ def edit_post(username, post_id):
     return redirect(url_for("log_in"))
 
 
+@app.route("/delete_post/<post_id>")
+def delete_post(post_id):
+    if session["user"]:
+        mongo.db.posts.remove({"_id": ObjectId(post_id)})
+        flash("Post Successfully Deleted")
+        return redirect(url_for('manage_posts', username=session['user']))
+    return redirect(url_for("log_in"))
+
+
 @app.route('/posts')
 def posts():
     posts = mongo.db.posts.find()
