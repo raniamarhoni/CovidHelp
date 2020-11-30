@@ -80,6 +80,9 @@ People can only add a post if they are logged in and have to log in to edit a po
 #### Search Posts
 You can search anything that will show up on the title and description 
 
+#### Unknown Passswords
+Password will always be hidden as it uses werkzeug.security to created a key for the password and i'm also able to check the password when logging in. 
+
 ### Features Left to Implement
 
 #### Sort and Filter Database 
@@ -129,11 +132,7 @@ I realised that if someone had the post_id they would be able to ed
 #### Post wasn't updating
 When updating a post not everything was getting updated as when updating it wasn't updateing fields that wouldn't change therefor that was changed so it can be added. 
 
-
-### Validators
 ## Deployment
-
- 
 ### How I deployed the site 
 	
 1. As I was going to use Gitpod I used this [template](https://github.com/Code-Institute-Org/gitpod-full-template) to open a GitHub repository 
@@ -145,11 +144,7 @@ When updating a post not everything was getting updated as when updati
 7. Before I clicked enable automatic deploys go onto settings and click on Reveal Config Vars. Once selected I added in the IP, Port, Secret key, Mongo URI, and Mongo Database 
 8. I went back to Gitpod and committed and push all the new files requirement.txt and profile to Github. 
 9. Then I went back to Heroku and selected Enable Automatic Deploys which will then build the app. 
-	
-How to set up a mongo db database
-To make sure 
 
-Clone the site 
 
 ## Credits
 
