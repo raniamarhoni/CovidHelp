@@ -73,7 +73,7 @@ body {
 /*----------NAVBAR----------*/
 
 .navbar-brand {
-    color: black;
+    color: #858585;
 }
 
 .navbar-brand:hover{
@@ -87,7 +87,7 @@ body {
 }
 
 .nav-link {
-    color: black;
+    color: #858585;
     font-size: 1em;  
 }
 
