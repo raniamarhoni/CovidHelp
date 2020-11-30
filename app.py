@@ -137,7 +137,6 @@ def add_a_post(username):
                 post = {
                     "type_of_help": request.form.get("type_of_help"),
                     "user": session["user"],
-                    "location": request.form.get("location"),
                     "title": request.form.get("title"),
                     "description": request.form.get("description"),
                     "date_posted":  datetime.datetime.now(),
@@ -166,7 +165,6 @@ def edit_post(username, post_id):
             submit = {
                 "type_of_help": request.form.get("type_of_help"),
                 "user": session["user"],
-                "location": request.form.get("location"),
                 "title": request.form.get("title"),
                 "description": request.form.get("description"),
                 "date_posted": mongo.db.posts.find_one(
