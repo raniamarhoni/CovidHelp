@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends "base.html" %} {% block title %}
+<title>View post</title>
+{% endblock %} {% block content %}
+
+<div class="row">
+  <div class="col-sm-12 col-md-8 form-section">
+
+    <!--Card-->
+    <div class="card card-format">
+
+      <!--Card Header-->
+      <div class="card-header">
+        <h2>{{ post.title }}</h2>
+      </div>
+      
+      <!--Cars Body-->
+      <div class="card-body">
+            {% if post.type_of_help == 'offering' %}
+            <p>Lending a Helping Hand</p>
+            {% else %}
+            <p>Finding a helping hand</p>
+            {% endif %}
+
+
+            <p>{{- post.description -}}</p>
+
+            <div class="row">
+                <div class="col-6">{{ post.date_posted }}</div>
+                <div class="col-6">{{ post.location }}</div>
+            </div>
+      </div>
+
+        <div class="card-footer">
+        <p>Respond to Post</p>
+        <form class="form-format" method="POST" action="{{ url_for('view_post', post_id=post._id)}}}">
+            <input id="email" name="email" type="email" placeholder="Email:" 
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                title="Not a valid email" class="validate form-input" required />
+
+            <textarea class="form-input" name="description" rows="6" placeholder="Message:" required></textarea>
+            <button type="submit" class="form-submit">Respond to email <i class="fas fa-sign-in-alt"></i></button>
+        
+        </form>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

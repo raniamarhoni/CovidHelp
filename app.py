@@ -185,6 +185,12 @@ def posts():
     return render_template("posts.html", posts=posts)
 
 
+@app.route("/view_post/<post_id>")
+def view_post(post_id):
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    return render_template("view_post.html", post=post)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
