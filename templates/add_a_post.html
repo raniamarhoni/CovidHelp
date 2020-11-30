@@ -20,15 +20,15 @@
             <label class="radio-form-label">Are you offering or finding help: </label>
             <div class="form-check-inline">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="type_of_help" value="offering">Offering
+                    <input type="radio" class="form-check-input" name="type_of_help" value="offering" required />Offering
                 </label>
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="type_of_help" value="finding">Finding
                 </label>
             </div>
 
-            <input id="title" name="title" type="text" placeholder="Title:" class="validate form-input" required/>
-            <textarea class="form-input" name="description" rows="6" placeholder="Description:" required></textarea>
+            <input id="title" name="title" type="text" placeholder="Title:" class="validate form-input" pattern=".{5,}" title="Five or more characters" required/>
+            <textarea class="form-input" name="description" rows="6" placeholder="Description:" pattern=".{5,}" title="Five or more characters" required></textarea>
             <button type="submit" class="form-submit">Submit <i class="fas fa-sign-in-alt"></i></button>
 
         </form>
