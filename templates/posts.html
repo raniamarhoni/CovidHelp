@@ -11,40 +11,16 @@
 </div>
 
 <div class="filter-search-box">
-    <h4 class="filter-header">Filter & Sort</h4>
+    <h4 class="filter-header">Search</h4>
 	<form action="{{ url_for('search') }}" method="post" class="">
 		<div class="row">
 
-            <div class="search-section col-sm-12 col-md-6">
+            <div class="search-section col-sm-12">
 			    <label for="query">Search:</label>
 			    <input type="text" name="query" minlength="3" class="validate filter-input">
             </div>
 
         </div>
-
-		<div class="row">
-            <div class="finding-section col-sm-12 col-md-6">
-			    <input type="checkbox" name="finding" value="finding" checked>
-			    <label for="finding"> Asking for Help Post</label>
-            </div>
-
-            <div class="offering-section col-sm-12 col-md-6">
-			    <input type="checkbox" name="offering" value="offering" checked>
-			    <label for="offering"> Lending Help Post</label>
-            </div>
-
-		</div>
-
-
-		<div class="row">
-            <div class="sorting-section">
-			    <label for="sort">Sort:</label>
-			    <select name="sort" id="sort">
-                    <option value="location">Nearest to you</option>
-                    <option value="Most_Recent">Most Recent</option>
-                </select>
-            </div>
-		</div>
 
 		<div class="row">
             <div class="filter-button-section">
@@ -71,7 +47,7 @@
 		<div class="post-start">
 			<div class="row">
 				<p class="post-title col-sm-12 col-md-6">{{ post.title }}</p>
-				<p class="post-date-location col-md-6 d-none d-md-block">{{ post.date_posted }} / {{ post.location }}
+				<p class="post-date-location col-md-6 d-none d-md-block">{{ post.date_posted }}
 				</p>
 			</div>
 			<p class="post-description">{{ post.description }}</p>
