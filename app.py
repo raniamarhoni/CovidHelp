@@ -11,7 +11,6 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -137,7 +136,8 @@ def add_a_post(username):
                 "location": request.form.get("location"),
                 "title": request.form.get("title"),
                 "description": request.form.get("description"),
-                "date_posted": datetime.datetime.now()
+                "date_posted": datetime.datetime.now(),
+                "email": user.email
             }
             mongo.db.posts.insert_one(post)
             flash("Post Successfully Added")
@@ -188,7 +188,9 @@ def posts():
 @app.route("/view_post/<post_id>")
 def view_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-    return render_template("view_post.html", post=post)
+    return render_template("view_post.html", post=post) 
+
+
 
 
 @app.route("/search", methods=["GET", "POST"])

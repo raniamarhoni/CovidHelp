@@ -33,15 +33,8 @@
 
         <div class="card-footer">
         <p>Respond to Post</p>
-        <form class="form-format" method="POST" action="{{ url_for('view_post', post_id=post._id)}}}">
-            <input id="email" name="email" type="email" placeholder="Email:" 
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-                title="Not a valid email" class="validate form-input" required />
+        <p>There Email is: {{ post.email }}</p>
 
-            <textarea class="form-input" name="description" rows="6" placeholder="Message:" required></textarea>
-            <button type="submit" class="form-submit">Respond to email <i class="fas fa-sign-in-alt"></i></button>
-        
-        </form>
         </div>
 
     </div>
