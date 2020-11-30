@@ -278,7 +278,7 @@ body {
     margin: 0px;
 }
 
-/*----------Filter and Search----------*/
+/*----------Search----------*/
 
 .filter-search-box {
     text-align: center;
@@ -296,23 +296,6 @@ body {
     text-align: center;
 }
 
-.location-section {
-    text-align: center;
-}
-
-.finding-section {
-    text-align: center;
-}
-
-.offering-section {
-    text-align: center;
-}
-
-.sorting-section {
-    text-align: center;
-    margin: auto;
-}
-
 .filter-button-section {
     text-align: center;
     margin: auto;
@@ -320,12 +303,4 @@ body {
 
 .filter-input {
     width:70%
-}
-
-.card-format {
-    color: #858585;
-}
-
-.bold {
-    font-weight:bold;
 }
