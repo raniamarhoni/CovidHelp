@@ -191,6 +191,13 @@ def view_post(post_id):
     return render_template("view_post.html", post=post)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    posts = list(mongo.db.posts.find({"$text": {"$search": query}}))
+    return render_template("posts.html", posts=posts)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

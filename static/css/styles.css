@@ -277,3 +277,47 @@ body {
     padding: 10px 0px;
     margin: 0px;
 }
+
+/*----------Filter and Search----------*/
+
+.filter-search-box {
+    text-align: center;
+    border: 2px solid #858585;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.filter-header {
+    color: #858585;
+    text-align: center;
+}
+
+.search-section {
+    text-align: center;
+}
+
+.location-section {
+    text-align: center;
+}
+
+.finding-section {
+    text-align: center;
+}
+
+.offering-section {
+    text-align: center;
+}
+
+.sorting-section {
+    text-align: center;
+    margin: auto;
+}
+
+.filter-button-section {
+    text-align: center;
+    margin: auto;
+}
+
+.filter-input {
+    width:70%
+}

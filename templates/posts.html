@@ -6,39 +6,93 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <h2 class="page_headers">All Posts</h2>
-    </div>
-    <div class="posts">
-        {% for post in posts %}
-        <div class="post-box">
+<div>
+	<h2 class="page_headers">All Posts</h2>
+</div>
 
-                {% if post.type == "Offering": %}
-                    <p class="post-help-header">Lending a Helping Hand</p>
-                {% else: %}
-                    <p class="post-help-header">Needs a Helping Hand</p>
-                {% endif %}
+<div class="filter-search-box">
+    <h4 class="filter-header">Filter & Sort</h4>
+	<form action="{{ url_for('search') }}" method="post" class="">
+		<div class="row">
 
-                <div class="post-start">
-                <div class="row">
-                    <p class="post-title col-sm-12 col-md-6">{{ post.title }}</p>
-                    <p class="post-date-location col-md-6 d-none d-md-block">{{ post.date_posted }} / {{ post.location }}</p>
-                </div>
-                <p class="post-description">{{ post.description }}</p>
-                <div class="row d-md-none">
-                    <p class="post-date col-6">{{ post.date_posted }}</p>
-                    <p class="post-location col-6">{{ post.location }}</p>
-                </div>
+            <div class="search-section col-sm-12 col-md-6">
+			    <label for="query">Search:</label>
+			    <input type="text" name="query" id="query" minlength="3" class="validate filter-input">
+            </div>
 
-                </div>
+            <div class="location-section col-sm-12 col-md-6">
+			    <label for="query">Location:</label>
+			    <input type="text" name="query" id="query" minlength="3" class="validate filter-input">
+            </div>
 
-                <div class="button-section-end">
-                    <a class="button" href="{{ url_for('view_post', post_id=post._id)}}">View Post</a>
-                </div>
         </div>
-    {% endfor %}
-    </div>
 
-    
+		<div class="row">
+            <div class="finding-section col-sm-12 col-md-6">
+			    <input type="checkbox" name="finding" value="finding" checked>
+			    <label for="finding"> Asking for Help Post</label>
+            </div>
+
+            <div class="offering-section col-sm-12 col-md-6">
+			    <input type="checkbox" name="offering" value="offering" checked>
+			    <label for="offering"> Lending Help Post</label>
+            </div>
+
+		</div>
+
+
+		<div class="row">
+            <div class="sorting-section">
+			    <label for="sort">Sort:</label>
+			    <select name="sort" id="sort">
+                    <option value="location">Nearest to you</option>
+                    <option value="Most_Recent">Most Recent</option>
+                </select>
+            </div>
+		</div>
+
+		<div class="row">
+            <div class="filter-button-section">
+			    <a href="{{ url_for('posts') }}" class="button">Reset</a>
+			    <button type="submit" class="button">
+                <i class="fas fa-search left"></i> Search
+                </button>
+            </div>
+		</div>
+
+	</form>
+</div>
+
+<div class="posts">
+	{% for post in posts %}
+	<div class="post-box">
+
+		{% if post.type == "Offering": %}
+		<p class="post-help-header">Lending a Helping Hand</p>
+		{% else: %}
+		<p class="post-help-header">Needs a Helping Hand</p>
+		{% endif %}
+
+		<div class="post-start">
+			<div class="row">
+				<p class="post-title col-sm-12 col-md-6">{{ post.title }}</p>
+				<p class="post-date-location col-md-6 d-none d-md-block">{{ post.date_posted }} / {{ post.location }}
+				</p>
+			</div>
+			<p class="post-description">{{ post.description }}</p>
+			<div class="row d-md-none">
+				<p class="post-date col-6">{{ post.date_posted }}</p>
+				<p class="post-location col-6">{{ post.location }}</p>
+			</div>
+
+		</div>
+
+		<div class="button-section-end">
+			<a class="button" href="{{ url_for('view_post', post_id=post._id)}}">View Post</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
 
 {% endblock %}
