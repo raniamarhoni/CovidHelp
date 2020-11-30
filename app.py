@@ -160,7 +160,9 @@ def edit_post(username, post_id):
                 "user": session["user"],
                 "location": request.form.get("location"),
                 "title": request.form.get("title"),
-                "description": request.form.get("description")
+                "description": request.form.get("description"),
+                "date_posted": mongo.db.posts.find_one({"_id": ObjectId(post_id)})["date_posted"],
+                "email": mongo.db.users.find_one({"username": session["user"]})["email"]
             }
             mongo.db.posts.update({"_id": ObjectId(post_id)}, submit)
             flash("Post Successfully Updated")
