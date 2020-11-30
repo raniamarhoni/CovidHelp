@@ -4,7 +4,6 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 import datetime
-from ukpostcodeutils import validation
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -132,23 +131,19 @@ def add_a_post(username):
 
     if session["user"]:
         if request.method == "POST":
-            if validation.is_valid_postcode(
-             request.form.get("location").replace(" ", "")):
-                post = {
-                    "type_of_help": request.form.get("type_of_help"),
-                    "user": session["user"],
-                    "title": request.form.get("title"),
-                    "description": request.form.get("description"),
-                    "date_posted":  datetime.datetime.now(),
-                    "email": mongo.db.users.find_one(
-                        {"username": session["user"]})["email"]
-                }
-                mongo.db.posts.insert_one(post)
-                flash("Post Successfully Added")
-                return redirect(url_for(
-                 'manage_posts', username=session['user']))
-            flash("postcode not valid")
-            return render_template("add_a_post.html", username=username)
+            post = {
+                "type_of_help": request.form.get("type_of_help"),
+                "user": session["user"],
+                "title": request.form.get("title"),
+                "description": request.form.get("description"),
+                "date_posted":  datetime.datetime.now(),
+                "email": mongo.db.users.find_one(
+                    {"username": session["user"]})["email"]
+            }
+            mongo.db.posts.insert_one(post)
+            flash("Post Successfully Added")
+            return redirect(url_for(
+                'manage_posts', username=session['user']))
         return render_template("add_a_post.html", username=username)
 
     return redirect(url_for("log_in"))
