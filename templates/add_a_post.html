@@ -16,7 +16,7 @@
       
       <!--Cars Body-->
       <div class="card-body">
-        <form class="form-format" method="POST" action="{{url_for('add_a_post') }}">
+        <form class="form-format" method="POST" action="{{url_for('add_a_post', username=session['user']) }}">
             <label class="radio-form-label">Are you offering or finding help: </label>
             <div class="form-check-inline">
                 <label class="form-check-label">

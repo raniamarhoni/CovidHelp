@@ -124,23 +124,27 @@ def manage_posts(username):
     return redirect(url_for("log_in"))
 
 
-@app.route("/add_a_post", methods=["GET", "POST"])
-def add_a_post():
+@app.route("/add_a_post/<username>", methods=["GET", "POST"])
+def add_a_post(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
 
-    if request.method == "POST":
-        post = {
-            "type_of_help": request.form.get("type_of_help"),
-            "username": session["user"],
-            "location": request.form.get("location"),
-            "title": request.form.get("title"),
-            "description": request.form.get("description"),
-            "date_posted": datetime.datetime.now()
-        }
-        mongo.db.posts.insert_one(post)
-        flash("Post Successfully Added")
-        return redirect(url_for('manage_posts', username=session['user']))
+    if session["user"]:
+        if request.method == "POST":
+            post = {
+                "type_of_help": request.form.get("type_of_help"),
+                "user": session["user"],
+                "location": request.form.get("location"),
+                "title": request.form.get("title"),
+                "description": request.form.get("description"),
+                "date_posted": datetime.datetime.now()
+            }
+            mongo.db.posts.insert_one(post)
+            flash("Post Successfully Added")
+            return redirect(url_for('manage_posts', username=session['user']))
+        return render_template("add_a_post.html", username=username)
 
-    return render_template("add_a_post.html")
+    return redirect(url_for("log_in"))
 
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])

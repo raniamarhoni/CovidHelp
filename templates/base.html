@@ -44,7 +44,7 @@
                     <a class="nav-link" href="{{url_for('manage_posts', username=session['user']) }}">Manage Posts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('add_a_post') }}">Add a Post</a>
+                    <a class="nav-link" href="{{url_for('add_a_post', username=session['user']) }}">Add a Post</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('log_out') }}">Log Out</a>
