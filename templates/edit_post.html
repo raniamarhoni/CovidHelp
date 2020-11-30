@@ -16,7 +16,7 @@
       
       <!--Cars Body-->
       <div class="card-body">
-        <form class="form-format" method="POST" action="{{url_for('edit_post', post_id=post._id) }}">
+        <form class="form-format" method="POST" action="{{url_for('edit_post', username=username, post_id=post._id) }}">
             <label class="radio-form-label">Are you offering or finding help: </label>
             {% if post.type_of_help == 'offering' %}
             <div class="form-check-inline">

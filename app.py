@@ -147,21 +147,27 @@ def add_a_post(username):
     return redirect(url_for("log_in"))
 
 
-@app.route("/edit_post/<post_id>", methods=["GET", "POST"])
-def edit_post(post_id):
-    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-    if request.method == "POST":
-        submit = {
-            "type_of_help": request.form.get("type_of_help"),
-            "username": session["user"],
-            "location": request.form.get("location"),
-            "title": request.form.get("title"),
-            "description": request.form.get("description")
-        }
-        mongo.db.posts.update({"_id": ObjectId(post_id)}, submit)
-        flash("Post Successfully Updated")
+@app.route("/edit_post/<username>/<post_id>", methods=["GET", "POST"])
+def edit_post(username, post_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
 
-    return render_template("edit_post.html", post=post)
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    if session["user"]:
+        if request.method == "POST":
+            submit = {
+                "type_of_help": request.form.get("type_of_help"),
+                "user": session["user"],
+                "location": request.form.get("location"),
+                "title": request.form.get("title"),
+                "description": request.form.get("description")
+            }
+            mongo.db.posts.update({"_id": ObjectId(post_id)}, submit)
+            flash("Post Successfully Updated")
+            return redirect(url_for('manage_posts', username=session['user']))
+
+        return render_template("edit_post.html", username=username, post=post)
+    return redirect(url_for("log_in"))
 
 
 @app.route('/posts')

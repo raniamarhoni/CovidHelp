@@ -102,6 +102,9 @@ I then changed it all back to username to avoid confusion
 ### Anyone can add a post even if they didnt have an account  
 I realised anyone was able to add a post if they typed it into the url therefor i changed it so you can only add a post if you are logged in 
 
+### Anyone can edit the post if they had the post_id 
+I realised that if someone had the post_id they would be able to edit the post even through they are not logged in i changed this so you can only access that page if you are logged in 
+
 ### Validators
 
 ## Deployment
