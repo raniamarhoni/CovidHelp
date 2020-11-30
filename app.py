@@ -53,7 +53,7 @@ def register():
         register = {
             "type-of-help": request.form.get("type_of_help"),
             "email": request.form.get("email"),
-            "user": request.form.get("username").lower(),
+            "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
@@ -130,7 +130,7 @@ def add_a_post():
     if request.method == "POST":
         post = {
             "type_of_help": request.form.get("type_of_help"),
-            "user": session["user"],
+            "username": session["user"],
             "location": request.form.get("location"),
             "title": request.form.get("title"),
             "description": request.form.get("description"),
@@ -149,7 +149,7 @@ def edit_post(post_id):
     if request.method == "POST":
         submit = {
             "type_of_help": request.form.get("type_of_help"),
-            "user": session["user"],
+            "username": session["user"],
             "location": request.form.get("location"),
             "title": request.form.get("title"),
             "description": request.form.get("description")
