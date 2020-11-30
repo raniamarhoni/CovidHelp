@@ -99,17 +99,20 @@ They can search up posts people have posted on ways they can help and respond as
 When adding or editing a post I realised it wasn't showing up on the manage tasks page but would add or edit in the mongodb database. I noticed when adding a post it was saving the user under username instead of user which would add to the database but wouldn't show up on the users manage posts. Therefore it was changed to user 
 I then changed it all back to username to avoid confusion
 
-### Anyone can add a post even if they didnt have an account  
+#### Anyone can add a post even if they didnt have an account  
 I realised anyone was able to add a post if they typed it into the url therefor i changed it so you can only add a post if you are logged in 
 
-### Anyone can edit the post if they had the post_id 
+#### Anyone can edit the post if they had the post_id 
 I realised that if someone had the post_id they would be able to edit the post even through they are not logged in i changed this so you can only access that page if you are logged in 
 
-### Post wasn't updating
+#### Post wasn't updating
 When updating a post not everything was getting updated as it wasn't being on the list to get updated 
 
 
 ### Validators
+
+I've used a validator for very language used 
+* [Python Validator](http://pep8online.com/)
 
 ## Deployment
 

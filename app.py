@@ -3,7 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-import datetime 
+import datetime
 from ukpostcodeutils import validation
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -45,10 +45,10 @@ def register():
             return redirect(url_for("register"))
 
         # check if the passwords match
-        if request.form.get("password") != request.form.get(
-             "confirm_password"):
-                flash("Passwords don't match")
-                return redirect(url_for("register"))
+        if request.form.get(
+          "password") != request.form.get("confirm_password"):
+            flash("Passwords don't match")
+            return redirect(url_for("register"))
 
         register = {
             "type-of-help": request.form.get("type_of_help"),
@@ -74,7 +74,8 @@ def log_in():
 
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(
+               existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for(
@@ -131,7 +132,8 @@ def add_a_post(username):
 
     if session["user"]:
         if request.method == "POST":
-            if validation.is_valid_postcode(request.form.get("location").replace(" ", "")):
+            if validation.is_valid_postcode(
+             request.form.get("location").replace(" ", "")):
                 post = {
                     "type_of_help": request.form.get("type_of_help"),
                     "user": session["user"],
@@ -139,11 +141,13 @@ def add_a_post(username):
                     "title": request.form.get("title"),
                     "description": request.form.get("description"),
                     "date_posted":  datetime.datetime.now(),
-                    "email": mongo.db.users.find_one({"username": session["user"]})["email"]
+                    "email": mongo.db.users.find_one(
+                        {"username": session["user"]})["email"]
                 }
                 mongo.db.posts.insert_one(post)
                 flash("Post Successfully Added")
-                return redirect(url_for('manage_posts', username=session['user']))
+                return redirect(url_for(
+                 'manage_posts', username=session['user']))
             flash("postcode not valid")
             return render_template("add_a_post.html", username=username)
         return render_template("add_a_post.html", username=username)
@@ -165,8 +169,10 @@ def edit_post(username, post_id):
                 "location": request.form.get("location"),
                 "title": request.form.get("title"),
                 "description": request.form.get("description"),
-                "date_posted": mongo.db.posts.find_one({"_id": ObjectId(post_id)})["date_posted"],
-                "email": mongo.db.users.find_one({"username": session["user"]})["email"]
+                "date_posted": mongo.db.posts.find_one(
+                    {"_id": ObjectId(post_id)})["date_posted"],
+                "email": mongo.db.users.find_one(
+                    {"username": session["user"]})["email"]
             }
             mongo.db.posts.update({"_id": ObjectId(post_id)}, submit)
             flash("Post Successfully Updated")
@@ -194,9 +200,7 @@ def posts():
 @app.route("/view_post/<post_id>")
 def view_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-    return render_template("view_post.html", post=post) 
-
-
+    return render_template("view_post.html", post=post)
 
 
 @app.route("/search", methods=["GET", "POST"])
