@@ -17,12 +17,12 @@
 
             <div class="search-section col-sm-12 col-md-6">
 			    <label for="query">Search:</label>
-			    <input type="text" name="query" id="query" minlength="3" class="validate filter-input">
+			    <input type="text" name="query" minlength="3" class="validate filter-input">
             </div>
 
             <div class="location-section col-sm-12 col-md-6">
 			    <label for="query">Location:</label>
-			    <input type="text" name="query" id="query" minlength="3" class="validate filter-input">
+			    <input type="text" name="query" minlength="3" class="validate filter-input">
             </div>
 
         </div>
@@ -88,7 +88,7 @@
 		</div>
 
 		<div class="button-section-end">
-			<a class="button" href="{{ url_for('view_post', post_id=post._id)}}">View Post</a>
+			<a class="button form-link" href="{{ url_for('view_post', post_id=post._id)}}">View Post</a>
 		</div>
 	</div>
 	{% endfor %}

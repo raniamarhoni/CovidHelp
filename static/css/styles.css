@@ -321,3 +321,11 @@ body {
 .filter-input {
     width:70%
 }
+
+.card-format {
+    color: #858585;
+}
+
+.bold {
+    font-weight:bold;
+}

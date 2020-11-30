@@ -3,7 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from datetime import datetime, timedelta
+import datetime 
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -136,8 +136,8 @@ def add_a_post(username):
                 "location": request.form.get("location"),
                 "title": request.form.get("title"),
                 "description": request.form.get("description"),
-                "date_posted": datetime.datetime.now(),
-                "email": user.email
+                "date_posted":  datetime.datetime.now(),
+                "email": mongo.db.users.find_one({"username": session["user"]})["email"]
             }
             mongo.db.posts.insert_one(post)
             flash("Post Successfully Added")
